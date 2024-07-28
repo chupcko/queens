@@ -1,0 +1,27 @@
+name: Generate
+
+on:
+  push:
+    branches:
+    - '**'
+
+jobs:
+
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: checkout
+      uses: actions/checkout@v4
+      persist-credentials: true
+
+    - name: generate
+      run: date +%s > timestamp.txt
+
+    - name: commit
+      run: |
+        git config --local user.email 'action@github.com'
+        git config --local user.name 'GitHub Action'
+        git add timestamp.txt
+        git commit -m 'Update timestamp [skip ci]' || exit 0
+        git push
