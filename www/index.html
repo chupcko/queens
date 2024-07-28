@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>QUEENS</title>
+    <style type="text/css">
+
+:root {
+  --body-margin: 16px;
+  --color: rgb(0%, 0%, 0%);
+  --font-family: arial, sans-serif;
+  --font-size: 16px;
+}
+
+.body {
+  background-color: rgb(100%, 100%, 100%);
+  box-sizing: content-box;
+  color: var(--color);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  margin: var(--body-margin);
+  user-select: none;
+}
+
+.center {
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container {
+  display: inline-block;
+}
+
+    </style>
+    <script type="importmap">
+
+{
+  "imports": {
+    "config": "./js/config.js",
+    "location": "./js/location.js",
+    "field": "./js/field.js",
+    "game": "./js/game.js",
+    "problems": "./js/problems.js",
+    "game_control": "./js/game_control.js",
+    "helper_control": "./js/helper_control.js"
+  }
+}
+
+    </script>
+    <script type="module">
+
+import { Config } from 'config';
+import { Location } from 'location';
+import { Game_control } from 'game_control';
+import { Helper_control } from 'helper_control';
+
+new Game_control(new Config(), new Location('problem'), 'game_control');
+new Helper_control('helper_control');
+
+    </script>
+  </head>
+  <body class="body">
+    <div id="game_control"></div>
+    <p/>
+    &copy; 2024 Goran "<a href="https://chupcko.org/" class="link">CHUPCKO</a>" Lazi&#x0107;
+    <p/>
+    <div id="helper_control"></div>
+    <p/>
+<pre>
+OVO JE RADNA VERZIJA, moze imati bagove, nije zavrseno jos :),
+ali slobodno sta god mislite da bi moglo, smarajte :)
+TODO:
+- za game.new regenerisi samo canvas novom dimenzijom
+- implementiraj input nivoa kao "cudan" string
+- implementiraj save load, tipa steka
+</pre>
+  </body>
+</html>

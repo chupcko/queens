@@ -17,12 +17,14 @@ jobs:
         persist-credentials: true
 
     - name: generate
-      run: date +%s > timestamp.txt
+      run: |
+        mv www/js/problems.js www/js/problems_old.js
+        bin/generate_problems_js.sh > www/js/problems.js
 
     - name: commit
       run: |
         git config --local user.email 'action@github.com'
         git config --local user.name 'GitHub Action'
-        git add timestamp.txt
-        git commit -m 'Update timestamp [skip ci]' || exit 0
+        git add .
+        git commit -m "[skip ci] Update $(date +%s)" || exit 0
         git push
