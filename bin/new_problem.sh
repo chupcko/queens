@@ -13,7 +13,7 @@ $EDITOR "${FILE}"
 
 cat <<EOI
 
-git add ${FILE}
+git add "${FILE}"
 git commit -m "${TODAY}"
 git push
 
