@@ -11,6 +11,21 @@ mkdir -p "${DIR}"
 cp "templates/${SIZE}.qs" "${FILE}"
 $EDITOR "${FILE}"
 
+find problems -type f |\
+  xargs -n1 md5sum |\
+  cut -d ' ' -f 1 |\
+  sort |\
+  uniq -c |\
+  sort -n |\
+  grep -v '^[ ]*1 '
+
+(
+  cd solver
+  cargo run "../${FILE}"
+)
+
+
+
 cat <<EOI
 
 git add "${FILE}"

@@ -5,4 +5,5 @@ find problems -type f |\
   cut -d ' ' -f 1 |\
   sort |\
   uniq -c |\
-  sort -n
+  sort -n |\
+  grep -v '^[ ]*1 '
