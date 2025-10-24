@@ -11,6 +11,7 @@ mkdir -p "${DIR}"
 cp "templates/${SIZE}.qs" "${FILE}"
 $EDITOR "${FILE}"
 
+echo 'Start duplicate search'
 find problems -type f |\
   xargs -n1 md5sum |\
   cut -d ' ' -f 1 |\
@@ -18,6 +19,7 @@ find problems -type f |\
   uniq -c |\
   sort -n |\
   grep -v '^[ ]*1 '
+echo 'End duplicate search'
 
 (
   cd solver
